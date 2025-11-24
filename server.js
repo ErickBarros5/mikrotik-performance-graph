@@ -42,10 +42,10 @@ class MikrotikConnection {
 
             await this.connection.connect();
             this.isConnected = true;
-            console.log('✅ Conectado ao Mikrotik com sucesso!');
+            console.log('Conectado ao Mikrotik com sucesso!');
             return true;
         } catch (error) {
-            console.error('❌ Erro ao conectar ao Mikrotik:', error.message);
+            console.error('Erro ao conectar ao Mikrotik:', error.message);
             this.isConnected = false;
             return false;
         }
