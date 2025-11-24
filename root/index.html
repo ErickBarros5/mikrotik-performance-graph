@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grafico Mikrotik</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div>
+        <h1>Mikrotik Bandwidth Monitor </h1>
+        <p>Interface: <span id="interface-name">...</span></p>
+        <div id="current-traffic">
+            <p>Rx Atual: <strong id="current-rx">0 bps</strong></p>
+            <p>Tx Atual: <strong id="current-tx">0 bps</strong></p>
+            <p>Última Atualização: <strong id="last-update-time">--:--:--</strong></p>
+        </div>
+        <canvas id="bandwidthChart"></canvas>
+    </div>
+    
+    <script src="script.js"></script>
+
+</body>
+
+</html>
