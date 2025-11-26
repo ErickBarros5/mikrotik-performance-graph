@@ -2,6 +2,7 @@ document.getElementById('interface-name').textContent = 'ether1';
 
 const ctx = document.getElementById('bandwidthChart').getContext('2d');
 const MAX_DATA_POINTS = 30;
+let isPaused = false;
 
 const formatBits = (bits) => {
     const K = 1000;
@@ -86,7 +87,26 @@ const bandwidthChart = new Chart(ctx, chartConfig);
 
 const socket = io();
 
+const toggleButton = document.getElementById('toggle-monitor');
+toggleButton.addEventListener('click', () => {
+    isPaused = !isPaused;
+    if (isPaused) {
+        toggleButton.textContent = 'Retomar Monitoramento';
+        toggleButton.style.backgroundColor = 'green';
+        console.log('Monitoramento Pausado');
+    } else {
+        toggleButton.textContent = 'Pausar Monitoramento';
+        toggleButton.style.backgroundColor = '';
+        console.log('Monitoramento Retomado');
+    }
+});
+
 socket.on('bandwidth_update', (data) => {
+
+    if (isPaused) {
+        return; 
+    }
+
     document.getElementById('current-rx').textContent = formatBits(data.rx);
     document.getElementById('current-tx').textContent = formatBits(data.tx);
 
